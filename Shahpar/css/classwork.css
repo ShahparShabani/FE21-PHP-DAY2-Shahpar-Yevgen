@@ -1,0 +1,11 @@
+#main-container {
+  margin: auto;
+}
+
+#main-container #panels-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+  width: 80%;
+}
+/*# sourceMappingURL=classwork.css.map */
