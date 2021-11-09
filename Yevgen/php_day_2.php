@@ -7,7 +7,7 @@ Create a PHP script which will accept two parameters from the form (name and sur
    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content ="width=device-width, initial-scale=1.0">
-        <title>Name Form</title>
+        <title>PHP Day 2 Exercises 1-6</title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
    </head>
@@ -24,18 +24,25 @@ Create a PHP script which will accept two parameters from the form (name and sur
            <input type="submit" name="submit"/>
         </form>
        <?php
-       if(isset($_POST['submit']))
-       {
-           if( empty($_POST["name"]) && empty($_POST["surname"]) ) {
-               echo "Please provide your name and surname";
-           } elseif(empty($_POST["name"])){
-                echo "Please provide your name!";
-           } elseif(empty($_POST["surname"])){
-                echo "Please provide your surname!";
-           }  elseif(!empty($_POST["name"]) && !empty($_POST["surname"])) {
-               echo "<h1>Welcome {$_POST["name"]} {$_POST["surname"]}!</h1>";
-           } 
-       }
+            if( isset($_POST['submit']) )
+            {
+                if( empty($_POST["name"]) && empty($_POST["surname"]) ) 
+                {
+                    echo "Please provide your name and surname";
+
+                } elseif( empty($_POST["name"]) )
+                {
+                    echo "Please provide your name!";
+
+                } elseif( empty($_POST["surname"]) )
+                {
+                    echo "Please provide your surname!";
+
+                } elseif( !empty($_POST["name"]) && !empty($_POST["surname"]) ) 
+                {
+                    echo "<h1>Welcome {$_POST["name"]} {$_POST["surname"]}!</h1>";
+                } 
+            }
        ?>
 
 
@@ -45,12 +52,12 @@ Create a function which takes two integer parameters - divide them and output th
 
     <?php 
     
-    function devideIntegers($int1, $int2) {
-       return "<hr><br> <h2>Exercise 2</h2> <h3>Integer $int1 / integer $int2 = ". $int1 / $int2. "</h3>";
-    }
+        function devideIntegers($int1, $int2) 
+        {
+            return "<hr><br> <h2>Exercise 2</h2> <h3>Integer $int1 / integer $int2 = ". $int1 / $int2. "</h3>";
+        }
 
-    echo devideIntegers(9, 3);
-
+        echo devideIntegers(9, 3);
     ?>
 
 <!--Exercise 3
@@ -61,7 +68,8 @@ Sum:12
 Average: 4 -->
 
     <?php 
-        function getSumAvarageOfGrades(int $num1, int $num2, int $num3) {
+        function getSumAvarageOfGrades(int $num1, int $num2, int $num3) 
+        {
             $sum = $num1 + $num2 + $num3;
             $avarage = $sum / 3;
 
@@ -82,7 +90,8 @@ The area of the box is: 14
 The volume of the box is: 70 -->
 
     <?php 
-        function getAreaAndVolume(float $width,float $height, float $depth){
+        function getAreaAndVolume(float $width,float $height, float $depth)
+        {
             $area = $width * $height;
             $volume = $width * $height * $depth;
 
@@ -145,45 +154,52 @@ If the length of your name is larger than 5 characters, change the text colour t
         <br>
 
        <?php
-       if(isset($_POST['submit']))
-       {
-           // initiate variables for better readability
-           $firstname = $_POST["firstname"];
-           $lastname = $_POST["lastname"];
-           $age = $_POST["age"];
+            if(isset($_POST['submit'])) 
+            {
+                // initiate variables for better readability
+                $firstname = $_POST["firstname"];
+                $lastname = $_POST["lastname"];
+                $age = $_POST["age"];
 
-           // conditions for the input values
-           if( empty($firstname) && empty($lastname) && empty($age) ) {
-                echo "Please provide your firstname, lastname and age";
-           } 
-           elseif(empty($firstname)){
-                echo "Please provide your firstname!";
-           } 
-           elseif(empty($lastname)){
-                echo "Please provide your lastname!";
-           } 
-           elseif(empty($age)){
-                echo "Please provide your age!";  
-           } 
-           elseif(!empty($firstname) && !empty($lastname) && !empty($age)) {
-                if(mb_strlen($firstname) > 5 ? $color="text-success" : $color="text-danger")
-                echo "<br> <div>Welcome</div><div class='$color'>Firstname: {$firstname}</div> <div>Lastname: {$lastname}</div> <div>You are: {$age} old</div>";
+                // conditions for the input values
+                if( empty($firstname) && empty($lastname) && empty($age) ) 
+                {
+                    echo "Please provide your firstname, lastname and age";
+
+                } elseif( empty($firstname) )
+                {
+                    echo "Please provide your firstname!";
+
+                } elseif( empty($lastname) ) 
+                {
+                    echo "Please provide your lastname!";
+
+                } elseif( empty($age) )
+                {
+                    echo "Please provide your age!"; 
+
+                } elseif( !empty($firstname) && !empty($lastname) && !empty($age) ) 
+                {
+                    if(mb_strlen($firstname) > 5 ? $color="text-success" : $color="text-danger")
+                    echo "<br> <div>Welcome</div><div class='$color'>Firstname: {$firstname}</div> <div>Lastname: {$lastname}</div> <div>You are: {$age} old</div>";
+                }
             }
-        }
 
-        // for GET-method form
-        if(isset($_GET['submit']))
-       {
-           // initiate variables for better readability
-           $hobbies = $_GET["hobbies"];
+            // for GET-method form
+            if( isset($_GET['submit']) ) 
+            {
+                // initiate variables for better readability
+                $hobbies = $_GET["hobbies"];
 
-           // conditions for the input values
-           if(empty($hobbies)) {
-                echo "Please provide your hobbie";
-           } else {
-                echo "<br> <div>Hobbie: {$hobbies}</div>";
+                // conditions for the input values
+                if( empty($hobbies) ) 
+                {
+                    echo "Please provide your hobbie";
+
+                } else {
+                    echo "<br> <div>Hobbie: {$hobbies}</div>";
+                }
             }
-        }
        ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
