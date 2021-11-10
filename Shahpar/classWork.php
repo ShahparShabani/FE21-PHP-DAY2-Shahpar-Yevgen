@@ -123,7 +123,7 @@
 
                     <!-- Classwork 3 - Function calculate sum & average-->
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-classwork3">
-                        <form method="POST" onsubmit="submitForm(event, this)">
+                        <form method="POST">
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Math</label>
                                 <div class="col-sm-10">
@@ -144,7 +144,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary" name="formSubmit">Calculate</button>
+                            <button type="submit" class="btn btn-primary" name="sumAndAverage">Calculate</button>
                         </form>
                         <?php
 
@@ -216,39 +216,27 @@
 
                         ?>
                     </div>
-                    <!-- Classwork 5 - Function calculate area & volume of a box-->
+                    <!-- Classwork 5 - Function convert min to hours-->
                     <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-classwork5">
                         <form method="POST">
                             <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Width</label>
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Minutes</label>
                                 <div class="col-sm-10">
-                                    <input type="input" class="form-control" id="inputEmail3" name="width">
+                                    <input type="input" class="form-control" id="inputEmail3" name="min">
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Height</label>
-                                <div class="col-sm-10">
-                                    <input type="input" class="form-control" id="inputPassword3" name="height">
-                                </div>
-                            </div>
+                        
 
-                            <div class="row mb-3">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Depth</label>
-                                <div class="col-sm-10">
-                                    <input type="input" class="form-control" id="inputPassword3" name="depth">
-                                </div>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary" name="submitBTnArea">Calculate</button>
+                            <button type="submit" class="btn btn-primary" name="areaAndVolume2">Convert</button>
                         </form>
                         <?php
 
-                        function areaAndVolume2($width, $height, $depth)
+                        function convertMinToHour($minutes)
                         {
-                            $area = $width * $height * $depth;
-                            $volume = $width * $height * $depth;
+                            $hour = $minutes / 60;
+                            $min = $minutes - ($hour * 60);
 
-                            return  [$area, $volume];
+                            return  [$hour, $min];
                         }
 
                         if (isset($_POST['submitBTnArea'])) {
@@ -286,11 +274,11 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary" name="submitBTnArea">Calculate</button>
+                            <button type="submit" class="btn btn-primary" name="displayInfo">Calculate</button>
                         </form>
                         <?php
 
-                        function areaAndVolume3($width, $height, $depth)
+                        function displayInfo($width, $height, $depth)
                         {
                             $area = $width * $height * $depth;
                             $volume = $width * $height * $depth;
@@ -314,30 +302,6 @@
             </div>
         </div>
     </main>
-
-    <script>
-        function submitForm(e, form) {
-            e.preventDefault();
-
-            fetch('classwork.php', {
-                method: 'post',
-                body: JSON.stringify({
-                    math: form.math.value,
-                    physics: form.physics.value,
-                    english: form.english.value
-                })
-            }).then(function(response) {
-                return response.json();
-            }).then(function(data) {
-                //Success code goes here
-                alert('form submited')
-            }).catch(function(err) {
-                //Failure
-                console.log(form);
-            });
-        }
-    </script>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
